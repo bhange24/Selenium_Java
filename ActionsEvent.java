@@ -11,34 +11,30 @@ import org.openqa.selenium.interactions.Actions;
 public class ActionsEvent {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String URL="https://www.flipkart.com";
-		System.setProperty("Webdriver.chrome.driver","E://Selenium_Oxygen//workspace//seleniumtuts//Driver//chromedriver.exe");
-		
-		WebDriver driverobj= new ChromeDriver();
-		driverobj.get(URL);
-		
-		driverobj.manage().window().maximize();
-		WebElement fromele=driverobj.findElement(By.xpath("//*[text()='Drag me to my target']"));
-  		WebElement toele = driverobj.findElement(By.xpath("//div[contains(@id,'droppable')]"));
+  	// TODO Auto-generated method stub
+  	String URL="https://www.flipkart.com";
+  	System.setProperty("Webdriver.chrome.driver","E://Selenium_Oxygen//workspace//seleniumtuts//Driver//chromedriver.exe");
   
-		//Drag and drop the element by simply providing xpath 
-		Actions act = new Actions(driverobj);
-		act.dragAndDrop(fromele, toele).build().perform();
- 		//Actions.dragAndDrop(Sourcelocator, Destinationlocator) 
+  	WebDriver driverobj= new ChromeDriver();
+  	driverobj.get(URL);
   
- 		//Using X and Y cordinate of Destination element
-	  	Point pobj = toele.getLocation();
-		int xcordi = pobj.getX();
-		int ycordi = pobj.getY();
-		System.out.println("Element's Position from top"+ycordi +" pixels.");
-		System.out.println("Element's Position from left side"+xcordi +" pixels.");
-	  	act.dragAndDropBy(fromele,xcordi,ycordi).build().perform();
+  	driverobj.manage().window().maximize();
+ 	WebElement Username=driverobj.findElement(By.xpath("//input[@type='text' and @class='_2zrpKA']"));
+  	Actions act = new Actions(driverobj);
+  	Action seriesofaction=act.moveToElement(Username)
+	    .click()
+	//This another implementation of keyDown() method in which the modifier key press action is performed on a WebElement. 
+	    .keyDown(Username,Keys.SHIFT)
+	    .sendKeys(Username, "Shraddha")
+	//This implementation of keyUp() method performs the key-release action on a web element. 
+	    .keyUp(Username,Keys.SHIFT)
+   	//This will highlight text "Shraddha"
+   	.doubleClick(Username)
+	//This will bring context Menu
+    	.contextClick().build();
+  	//This is to perform all above actions.
+  	seriesofaction.perform();
   
- 		//Applying Click And Hold action an any element 
-  		act.clickAndHold(fromele).perform();
-		
-		
-	}
+ }
 
 }
