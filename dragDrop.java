@@ -23,21 +23,22 @@ public class dragDrop {
 		WebElement toele = driverobj.findElement(By
 				.xpath("//div[contains(@id,'droppable')]"));
 		
-		
+		//Drag and drop the element by simply providing xpath 
 		Actions act = new Actions(driverobj);
-		//act.dragAndDrop(fromele, toele).build().perform();
-		//Actions.dragAndDrop(Sourcelocator, Destinationlocator)	
+		act.dragAndDrop(fromele, toele).build().perform();
+		//Actions.dragAndDrop(Sourcelocator, Destinationlocator)
 		
+		//Using X and Y cordinate of Destination element
 		/*Point pobj = toele.getLocation();
-        int xcordi = pobj.getX();
-        int ycordi = pobj.getY();
-        System.out.println("Element's Position from top"+ycordi +" pixels.");
-        System.out.println("Element's Position from left side"+xcordi +" pixels.");
-        
+		int xcordi = pobj.getX();
+		int ycordi = pobj.getY();
+		System.out.println("Element's Position from top"+ycordi +" pixels.");
+		System.out.println("Element's Position from left side"+xcordi +" pixels.");
 		act.dragAndDropBy(fromele,xcordi,ycordi).build().perform();
 		*/
 		
-		act.clickAndHold(fromele).perform();
+		//Applying Click And Hold action an element 
+		//act.clickAndHold(fromele).perform();
 		
 	}
 
